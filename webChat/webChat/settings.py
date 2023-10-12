@@ -37,7 +37,17 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    #my apps
+    "channels",
+    "chat.apps.AppConfig"
 ]
+
+#Channels config
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND":"channels.layers.InMemoryChannelLayer", #usar una capa de memoria para desarrollo
+    }
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
