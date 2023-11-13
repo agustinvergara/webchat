@@ -116,7 +116,7 @@ class DjangoSession(models.Model):
 
 
 class Message(models.Model):
-    message_id = models.AutoField(unique=True)
+    message_id = models.AutoField(unique=True, primary_key=True)
     username = models.CharField(max_length=100, blank=True, null=True)
     content = models.CharField(max_length=600, blank=True, null=True)
     sent_time = models.DateTimeField(blank=True, null=True)

@@ -31,23 +31,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #channels
+    # "channels",
+
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    #my apps
-    "channels",
+    #django REST framework
+    "rest_framework",
     "chat"
 ]
-
-#Channels config
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND":"channels.layers.InMemoryChannelLayer", #usar una capa de memoria para desarrollo
-    }
-}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -83,17 +79,13 @@ WSGI_APPLICATION = "webChat.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.mysql',
-       'NAME': 'webchat_db',
-       'USER': 'webchat',
-       'PASSWORD': 'Agus0201.',
-       'HOST': 'localhost',
-       'PORT': '3306',
-   }
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
