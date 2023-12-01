@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     #channels
-    # "channels",
+    "channels",
 
     "django.contrib.admin",
     "django.contrib.auth",
@@ -41,9 +41,22 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     #django REST framework
-    "rest_framework",
+    # "rest_framework",
     "chat"
 ]
+
+
+# Channels 
+ASGI_APPLICATION = 'webChat.asgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -79,11 +92,17 @@ WSGI_APPLICATION = "webChat.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
+#remember to make a user for the database
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.mysql',
+       'NAME': 'webchat_db',
+       'USER': 'root',
+       'PASSWORD': 'Agus0201',
+       'HOST': 'localhost',
+       'PORT': '3306',
+   }
 }
 
 
